@@ -10,7 +10,9 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   bool _secureText = true;
-  bool _checkBoxValue = false;
+  bool _checkBoxValueMentor = false;
+  bool _checkBoxValueMentee = false;
+  bool _checkBoxValuePolicy = false;
   showHide() {
     setState(() {
       _secureText = !_secureText;
@@ -63,11 +65,11 @@ class _RegisterState extends State<Register> {
                 Row(
                   children: [
                     Checkbox(
-                      value: _checkBoxValue,
+                      value: _checkBoxValueMentor,
                       onChanged: (value) {
                         print(value);
                         setState(() {
-                          _checkBoxValue = value;
+                          _checkBoxValueMentor = value;
                         });
                       },
                     ),
@@ -77,11 +79,11 @@ class _RegisterState extends State<Register> {
                 Row(
                   children: [
                     Checkbox(
-                      value: _checkBoxValue,
+                      value: _checkBoxValueMentee,
                       onChanged: (value) {
                         print(value);
                         setState(() {
-                          _checkBoxValue = value;
+                          _checkBoxValueMentee = value;
                         });
                       },
                     ),
@@ -95,11 +97,11 @@ class _RegisterState extends State<Register> {
               child: Row(
                 children: [
                   Checkbox(
-                    value: _checkBoxValue,
+                    value: _checkBoxValuePolicy,
                     onChanged: (value) {
                       print(value);
                       setState(() {
-                        _checkBoxValue = value;
+                        _checkBoxValuePolicy = value;
                       });
                     },
                   ),
