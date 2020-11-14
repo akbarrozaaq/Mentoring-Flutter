@@ -7,7 +7,7 @@ class HitungUmur extends StatefulWidget {
 
 class _HitungUmurState extends State<HitungUmur> {
   int tanggal, bulan, tahun, umurTahun, umurBulan, umurTanggal;
-  var today = DateTime.parse("2020-11-11");
+  DateTime today = DateTime.now();
   String umur;
   final _key = new GlobalKey<FormState>();
 
