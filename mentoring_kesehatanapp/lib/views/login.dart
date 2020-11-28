@@ -158,6 +158,9 @@ class _LoginState extends State<Login> {
                         style: TextStyle(decoration: TextDecoration.underline),
                       ),
                     ),
+                    SizedBox(
+                      height: 16,
+                    )
                   ],
                 ),
               ),

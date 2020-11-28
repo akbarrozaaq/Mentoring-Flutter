@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'views/login.dart';
+import 'package:mentoring_kesehatanapp/views/getstarted.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Login(),
+    home: GettingStarted(),
     debugShowCheckedModeBanner: false,
   ));
 }

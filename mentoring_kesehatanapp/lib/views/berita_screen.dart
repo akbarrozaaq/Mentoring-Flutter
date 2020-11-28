@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mentoring_kesehatanapp/model/api.dart';
 import 'package:mentoring_kesehatanapp/model/berita_model.dart';
@@ -102,10 +103,11 @@ class _BeritaScreenState extends State<BeritaScreen> {
                             width: size.width * 0.63,
                             child: Column(
                               children: [
-                                Text(
+                                AutoSizeText(
                                   beritaModel[index].judul,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
+                                  minFontSize: 14,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -114,10 +116,11 @@ class _BeritaScreenState extends State<BeritaScreen> {
                                 SizedBox(
                                   height: 4,
                                 ),
-                                Text(
+                                AutoSizeText(
                                   beritaModel[index].isi,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 3,
+                                  minFontSize: 14,
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
