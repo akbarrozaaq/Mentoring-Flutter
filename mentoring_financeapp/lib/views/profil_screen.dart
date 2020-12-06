@@ -26,7 +26,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPref();
   }
@@ -37,6 +36,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
     return Scaffold(
       backgroundColor: Colors.white10,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Stack(
             alignment: Alignment.center,
@@ -46,18 +46,14 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   Container(
                     height: size.height * 0.2,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
-                      image: DecorationImage(
-                        fit: BoxFit.fitWidth,
-                        image: AssetImage('assets/profil.jpg'),
-                      ),
+                      color: Colors.purple,
                     ),
                   ),
                   Container(
                     height: size.height * 0.2,
                     width: size.width,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.purple,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(90),
                         bottomRight: Radius.circular(90),
@@ -105,33 +101,39 @@ class _ProfilScreenState extends State<ProfilScreen> {
               ),
             ],
           ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            width: size.width * 0.8,
-            child: FlatButton(
-              color: Colors.redAccent,
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                      color: Colors.red, width: 3, style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(50)),
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-              onPressed: () {
-                logOut();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Login()));
-              },
-              child: Text(
-                "Log out",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.white,
+          Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                width: size.width * 0.8,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          color: Colors.purple,
+                          width: 3,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  onPressed: () {
+                    logOut();
+
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Login()));
+                  },
+                  child: Text(
+                    "Log out",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.purple,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              SizedBox(
+                height: size.height * 0.07,
+              ),
+            ],
           ),
         ],
       ),

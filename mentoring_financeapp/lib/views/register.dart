@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:mentoring_kesehatanapp/model/api.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_button.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_input_field.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_password_field.dart';
+import 'package:mentoring_financeapp/model/api.dart';
+import 'package:mentoring_financeapp/views/login.dart';
+import 'package:mentoring_financeapp/widget/rounded_button.dart';
+import 'package:mentoring_financeapp/widget/rounded_input_field.dart';
+import 'package:mentoring_financeapp/widget/rounded_password_field.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -41,10 +42,8 @@ class _RegisterState extends State<Register> {
     int value = data['value'];
     String pesan = data['message'];
     if (value == 1) {
+      print(pesan);
       _showDialog("Berhasil", "Pendaftaran Sukses");
-      setState(() {
-        Navigator.pop(context);
-      });
     } else {
       _showDialog("Gagal", pesan);
       print(pesan);
@@ -74,7 +73,10 @@ class _RegisterState extends State<Register> {
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
-                    child: Image.asset('assets/signup.jpg'),
+                    child: Image.asset(
+                      'assets/signup.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 RoundedInputField(
@@ -91,7 +93,7 @@ class _RegisterState extends State<Register> {
                 RoundedPasswordField(
                   obsecureText: _secureText,
                   showPass: showHide,
-                  colorIcon: _secureText ? Colors.blue : Colors.grey,
+                  colorIcon: _secureText ? Colors.purple : Colors.grey,
                   onSaved: (e) => password = e,
                   validator: (e) {
                     if (e.isEmpty) {
@@ -138,7 +140,12 @@ class _RegisterState extends State<Register> {
             new FlatButton(
               child: new Text("OK"),
               onPressed: () {
-                Navigator.of(context).pop();
+                if (title == "Gagal") {
+                  Navigator.of(context).pop();
+                } else {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                }
               },
             ),
           ],

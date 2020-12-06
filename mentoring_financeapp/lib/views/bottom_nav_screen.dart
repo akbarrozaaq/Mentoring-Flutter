@@ -1,10 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:mentoring_kesehatanapp/views/berita_screen.dart';
-import 'package:mentoring_kesehatanapp/views/profil_screen.dart';
-import 'package:mentoring_kesehatanapp/widget/label_app.dart';
+import 'package:mentoring_financeapp/views/keuangan_screen.dart';
+import 'package:mentoring_financeapp/views/profil_screen.dart';
+import 'package:mentoring_financeapp/widget/label_app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'kamus_screen.dart';
+import 'tips_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -13,12 +13,12 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screen = [
-    BeritaScreen(),
-    KamusScreen(),
+    KeuanganScreen(),
+    TipsScreen(),
     ProfilScreen(),
   ];
 
-  final List _menu = ["Berita", "Kamus", "Profil"];
+  final List _menu = ["Data Keuangan", "Tips Keuangan", "Profil"];
 
   int _currentindex = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
@@ -37,7 +37,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPref();
   }
@@ -47,7 +46,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: namaApp(20, Colors.black87, Colors.blue, _menu[_currentindex]),
+        title: namaApp(20, Colors.black87, Colors.purple, _menu[_currentindex]),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -58,12 +57,12 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         index: 0,
         height: 50.0,
         items: <Widget>[
-          Icon(Icons.library_books_rounded, size: 24, color: Colors.white),
+          Icon(Icons.home, size: 24, color: Colors.white),
           Icon(Icons.menu_book_rounded, size: 24, color: Colors.white),
           Icon(Icons.person_rounded, size: 24, color: Colors.white),
         ],
-        color: Colors.blue,
-        buttonBackgroundColor: Colors.blue,
+        color: Colors.purple,
+        buttonBackgroundColor: Colors.purple,
         backgroundColor: Colors.white10,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 300),

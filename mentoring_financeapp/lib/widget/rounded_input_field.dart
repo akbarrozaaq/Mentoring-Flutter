@@ -25,13 +25,13 @@ class RoundedInputField extends StatelessWidget {
       child: TextFormField(
         validator: validator,
         onChanged: onChanged,
-        cursorColor: Colors.blue,
+        cursorColor: Colors.purple,
         onSaved: onSaved,
         controller: controller,
         decoration: InputDecoration(
           icon: Icon(
             icon,
-            color: Colors.blue,
+            color: Colors.purple,
           ),
           hintText: hintText,
           border: InputBorder.none,

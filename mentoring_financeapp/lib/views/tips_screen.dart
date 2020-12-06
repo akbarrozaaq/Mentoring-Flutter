@@ -1,42 +1,42 @@
 import 'dart:convert';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:mentoring_kesehatanapp/model/api.dart';
-import 'package:mentoring_kesehatanapp/model/kamus_model.dart';
+import 'package:mentoring_financeapp/model/api.dart';
+import 'package:mentoring_financeapp/model/tips_model.dart';
 
-class KamusScreen extends StatefulWidget {
+class TipsScreen extends StatefulWidget {
   @override
-  _KamusScreenState createState() => _KamusScreenState();
+  _TipsScreenState createState() => _TipsScreenState();
 }
 
-class _KamusScreenState extends State<KamusScreen> {
-  List<KamusModel> kamusModel;
+class _TipsScreenState extends State<TipsScreen> {
+  List<TipsModel> tipsModel;
 
   var loading = false;
-  Future<List<KamusModel>> getKamus() async {
+  Future<List<TipsModel>> getTips() async {
     setState(() {
       loading = true;
     });
-    final response = await http.get(BaseUrl.dataKamus);
+    final response = await http.get(BaseUrl.dataTips);
     List res = jsonDecode(response.body);
-    List<KamusModel> data = [];
+    List<TipsModel> data = [];
     for (var i = 0; i < res.length; i++) {
-      var kamus = KamusModel.fromJson(res[i]);
-      data.add(kamus);
+      var tips = TipsModel.fromJson(res[i]);
+      data.add(tips);
     }
 
-    kamusModel = data;
+    tipsModel = data;
     setState(() {
       loading = false;
     });
-    return kamusModel;
+    return tipsModel;
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getKamus();
+    getTips();
   }
 
   @override
@@ -47,14 +47,14 @@ class _KamusScreenState extends State<KamusScreen> {
       body: loading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: kamusModel.length,
+              itemCount: tipsModel.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                   onTap: () {
                     _showDetail(
-                        kamusModel[index].singkatan,
-                        kamusModel[index].kepanjangan,
-                        kamusModel[index].pengertian);
+                      tipsModel[index].judul,
+                      tipsModel[index].isi,
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -75,29 +75,27 @@ class _KamusScreenState extends State<KamusScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
+                              width: size.width * 0.8,
                               padding: EdgeInsets.all(8),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    kamusModel[index].singkatan,
+                                  AutoSizeText(
+                                    tipsModel[index].judul,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    minFontSize: 14,
                                     style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text("(" +
-                                      kamusModel[index].kepanjangan +
-                                      ")"),
                                 ],
                               ),
                             ),
                             Container(
                                 child: Text(
                               'Detail',
-                              style: TextStyle(color: Colors.blue),
+                              style: TextStyle(color: Colors.purple),
                             )),
                           ],
                         ),
@@ -110,23 +108,23 @@ class _KamusScreenState extends State<KamusScreen> {
     );
   }
 
-  void _showDetail(String singkatan, String kepanjangan, String pengertian) {
+  void _showDetail(String judul, String isi) {
     // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text(
-            singkatan,
+          title: Text(
+            judul,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          content: new Text(kepanjangan + "\n\n" + pengertian),
+          content: Text(isi),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("OK"),
+            FlatButton(
+              child: Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },

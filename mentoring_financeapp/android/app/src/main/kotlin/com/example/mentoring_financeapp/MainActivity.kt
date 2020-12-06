@@ -1,4 +1,4 @@
-package com.example.mentoring_financeapp
+package com.rozaaq.mentoring_financeapp
 
 import io.flutter.embedding.android.FlutterActivity
 

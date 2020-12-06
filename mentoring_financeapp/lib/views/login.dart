@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mentoring_kesehatanapp/model/api.dart';
-import 'package:mentoring_kesehatanapp/widget/label_app.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_button.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_input_field.dart';
-import 'package:mentoring_kesehatanapp/widget/rounded_password_field.dart';
+import 'package:mentoring_financeapp/model/api.dart';
+import 'package:mentoring_financeapp/widget/label_app.dart';
+import 'package:mentoring_financeapp/widget/rounded_button.dart';
+import 'package:mentoring_financeapp/widget/rounded_input_field.dart';
+import 'package:mentoring_financeapp/widget/rounded_password_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'bottom_nav_screen.dart';
 import 'register.dart';
@@ -91,6 +91,7 @@ class _LoginState extends State<Login> {
   }
 
   @override
+  // ignore: missing_return
   Widget build(BuildContext context) {
     switch (_loginStatus) {
       case LoginStatus.notSignIn:
@@ -107,13 +108,16 @@ class _LoginState extends State<Login> {
                     ),
                     Padding(
                         padding: EdgeInsets.all(16),
-                        child: namaApp(24, Colors.black87, Colors.blue)),
+                        child: namaApp(24, Colors.black87, Colors.purple)),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 40, vertical: 20),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.asset('assets/kesehatan.jpg'),
+                        child: Image.asset(
+                          'assets/login.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     RoundedInputField(
@@ -130,7 +134,7 @@ class _LoginState extends State<Login> {
                     RoundedPasswordField(
                       obsecureText: _secureText,
                       showPass: showHide,
-                      colorIcon: _secureText ? Colors.blue : Colors.grey,
+                      colorIcon: _secureText ? Colors.purple : Colors.grey,
                       onSaved: (e) => password = e,
                       validator: (e) {
                         if (e.isEmpty) {

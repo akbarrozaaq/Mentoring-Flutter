@@ -29,13 +29,13 @@ class RoundedPasswordField extends StatelessWidget {
         validator: validator,
         obscureText: obsecureText,
         onChanged: onChanged,
-        cursorColor: Colors.blue,
+        cursorColor: Colors.purple,
         controller: controller,
         decoration: InputDecoration(
           hintText: "Password",
           icon: Icon(
             Icons.lock,
-            color: Colors.blue,
+            color: Colors.purple,
           ),
           suffixIcon: IconButton(
             icon: Icon(Icons.visibility),

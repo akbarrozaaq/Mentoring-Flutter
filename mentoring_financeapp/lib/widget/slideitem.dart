@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentoring_kesehatanapp/widget/slide.dart';
+import 'package:mentoring_financeapp/widget/slide.dart';
+
 
 class SlideItem extends StatelessWidget {
   final int index;

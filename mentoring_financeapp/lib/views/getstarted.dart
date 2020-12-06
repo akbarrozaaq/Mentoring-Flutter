@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mentoring_kesehatanapp/widget/label_app.dart';
-import 'package:mentoring_kesehatanapp/widget/slide.dart';
-import 'package:mentoring_kesehatanapp/widget/slideitem.dart';
+import 'package:mentoring_financeapp/widget/label_app.dart';
+import 'package:mentoring_financeapp/widget/slide.dart';
+import 'package:mentoring_financeapp/widget/slideitem.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'login.dart';
 
@@ -25,7 +25,7 @@ class _GettingStartedState extends State<GettingStarted> {
             // gradient: LinearGradient(
             //   begin: Alignment.topRight,
             //   end: Alignment.bottomLeft,
-            //   colors: [Colors.white, Colors.blue],
+            //   colors: [Colors.white, Colors.purple],
             // ),
             color: Colors.white10),
         child: Padding(
@@ -51,7 +51,7 @@ class _GettingStartedState extends State<GettingStarted> {
               namaApp(
                 26,
                 Colors.black,
-                Colors.blue,
+                Colors.purple,
               ),
               Expanded(
                 flex: 5,
@@ -71,11 +71,11 @@ class _GettingStartedState extends State<GettingStarted> {
                 controller: _pageController, // PageController
                 count: 3,
                 effect: ExpandingDotsEffect(
-                    dotColor: Colors.blue,
+                    dotColor: Colors.purple,
                     radius: 20.0,
                     dotHeight: 5.0,
 //                  dotWidth: 10.0,
-                    activeDotColor: Colors.blue), // your preferred effect
+                    activeDotColor: Colors.purple), // your preferred effect
               ),
               SizedBox(height: 50),
               Column(

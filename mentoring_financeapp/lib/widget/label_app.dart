@@ -11,7 +11,7 @@ Widget namaApp(double fontSize, Color color1, Color color2,
             color: color1, fontFamily: 'Overpass', fontSize: fontSize),
       ),
       Text(
-        "Kesehatan",
+        "Keuangan",
         style: TextStyle(
             color: color2, fontFamily: 'Overpass', fontSize: fontSize),
       ),
@@ -24,7 +24,7 @@ Widget namaMenu(String menu) {
     padding: EdgeInsets.all(16),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
-      color: Colors.blue,
+      color: Colors.purple,
     ),
     child: Text(
       menu,
